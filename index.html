@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Capital Gainers | Trading & Investing</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #f5f5f5;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* NAVBAR */
+    header {
+      background: #ffffff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #1f1f1f;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #333;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #666;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #ffffff, #e9e9e9);
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      padding: 60px 0;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: 52px;
+      line-height: 1.2;
+      color: #111;
+      margin-bottom: 20px;
+    }
+
+    .hero-text h1 span {
+      color: #5c5c5c;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      color: #444;
+      margin-bottom: 30px;
+      max-width: 650px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      transition: 0.3s;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: #2d2d2d;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #111;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #2d2d2d;
+      border: 2px solid #2d2d2d;
+    }
+
+    .btn-secondary:hover {
+      background: #2d2d2d;
+      color: #fff;
+    }
+
+    .hero-card {
+      background: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+
+    .hero-card h3 {
+      margin-bottom: 18px;
+      font-size: 24px;
+      color: #222;
+    }
+
+    .hero-card ul {
+      list-style: none;
+    }
+
+    .hero-card ul li {
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
+      color: #444;
+      font-size: 16px;
+    }
+
+    .hero-card ul li:last-child {
+      border-bottom: none;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 18px;
+      font-size: 38px;
+      color: #1d1d1d;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 50px;
+      color: #555;
+      font-size: 17px;
+    }
+
+    .light-bg {
+      background: #ffffff;
+    }
+
+    .gray-bg {
+      background: #efefef;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 35px;
+      margin-top: 30px;
+    }
+
+    .about-box {
+      background: #fff;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    }
+
+    .about-box h3 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      color: #222;
+    }
+
+    .about-box p {
+      color: #4a4a4a;
+      margin-bottom: 15px;
+    }
+
+    /* CARDS */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 28px;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
+      color: #222;
+    }
+
+    .card p {
+      color: #4f4f4f;
+      font-size: 15px;
+    }
+
+    /* WHY + APPROACH LIST */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .feature-box {
+      background: #fff;
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    }
+
+    .feature-box h4 {
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: #222;
+    }
+
+    .feature-box p {
+      color: #4f4f4f;
+    }
+
+    /* CONTACT */
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 30px;
+      align-items: stretch;
+    }
+
+    .contact-box,
+    .contact-info {
+      background: #fff;
+      padding: 35px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+
+    .contact-box h3,
+    .contact-info h3 {
+      font-size: 28px;
+      margin-bottom: 18px;
+      color: #222;
+    }
+
+    .contact-box p,
+    .contact-info p {
+      color: #4b4b4b;
+      margin-bottom: 12px;
+      font-size: 16px;
+    }
+
+    .contact-links a {
+      display: inline-block;
+      margin-top: 10px;
+      color: #2d2d2d;
+      font-weight: 600;
+    }
+
+    .contact-links a:hover {
+      color: #000;
+    }
+
+    .contact-cta {
+      margin-top: 25px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #1e1e1e;
+      color: #fff;
+      text-align: center;
+      padding: 28px 0;
+    }
+
+    footer p {
+      color: #d0d0d0;
+      margin-top: 8px;
+      font-size: 15px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 992px) {
+      .hero-content,
+      .about-grid,
+      .card-grid,
+      .feature-grid,
+      .contact-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-text h1 {
+        font-size: 40px;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 60px 0;
+      }
+
+      .hero-text h1 {
+        font-size: 32px;
+      }
+
+      .hero-text p {
+        font-size: 16px;
+      }
+
+      .section-title {
+        font-size: 30px;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container navbar">
+      <div class="logo">Capital Gainers</div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#help">What I Help With</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why">Why Choose Me</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <h1>Helping Traders Build Better <span>Strategies, Discipline & Consistency</span></h1>
+        <p>
+          Capital Gainers is focused on helping traders improve strategy, strengthen mindset,
+          build discipline, and create long-term consistency in trading and investing.
+          The goal is simple — smarter decisions, better habits, and structured growth.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary">Work With Me</a>
+          <a href="#about" class="btn btn-secondary">About Me</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3>What Capital Gainers Focuses On</h3>
+        <ul>
+          <li>Trading & Investing Guidance</li>
+          <li>Strategy Improvement</li>
+          <li>Discipline & Consistency Building</li>
+          <li>Fund Management Support</li>
+          <li>1:1 Trading Psychology Work</li>
+          <li>Structured Growth for Traders</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT CAPITAL GAINERS -->
+  <section id="about" class="light-bg">
+    <div class="container">
+      <h2 class="section-title">About Capital Gainers</h2>
+      <p class="section-subtitle">
+        Capital Gainers is built around one mission — helping traders become more disciplined,
+        more consistent, and more confident in the way they approach the markets.
+      </p>
+
+      <div class="about-grid">
+        <div class="about-box">
+          <h3>Who We Are</h3>
+          <p>
+            Capital Gainers is a trading and investing-focused platform created to guide traders
+            toward better strategies, stronger discipline, and improved consistency.
+          </p>
+          <p>
+            Trading is not just about entries and exits — it is also about mindset, patience,
+            emotional control, risk management, and the ability to stay consistent over time.
+          </p>
+        </div>
+
+        <div class="about-box">
+          <h3>Our Purpose</h3>
+          <p>
+            Many traders struggle not because they lack potential, but because they lack structure,
+            psychology, and strategy clarity. Capital Gainers is designed to help bridge that gap.
+          </p>
+          <p>
+            The goal is to help traders build a stronger foundation through practical guidance,
+            better decision-making, and a long-term growth mindset.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT ME -->
+  <section class="gray-bg">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <p class="section-subtitle">
+        Trading and investing are more than just skills — they are a journey of learning,
+        adapting, and developing discipline under pressure.
+      </p>
+
+      <div class="about-box" style="max-width: 950px; margin: auto;">
+        <h3>My Journey</h3>
+        <p>
+          I am passionate about trading and investing, and Capital Gainers is a reflection of that journey.
+          Over time, I have learned that success in trading does not come from shortcuts or hype —
+          it comes from learning, adapting, controlling emotions, and staying disciplined even when the market tests you.
+        </p>
+        <p>
+          My approach is focused on real trading development: improving strategy clarity,
+          strengthening execution discipline, building emotional control, and creating consistency
+          instead of chasing random results.
+        </p>
+        <p>
+          I believe every trader can improve with the right mindset, the right process, and the right support.
+          That is the purpose behind Capital Gainers — helping traders move toward better habits,
+          smarter decisions, and long-term growth.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT I HELP WITH -->
+  <section id="help" class="light-bg">
+    <div class="container">
+      <h2 class="section-title">What I Help Traders With</h2>
+      <p class="section-subtitle">
+        The focus is not only on market entries — it is on building a stronger trader overall.
+      </p>
+
+      <div class="card-grid">
+        <div class="card">
+          <h3>Strategy Improvement</h3>
+          <p>
+            Helping traders refine their strategies, improve clarity in setups,
+            and create a more structured trading approach.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Discipline in Trading</h3>
+          <p>
+            Working on plan-following, reducing impulsive decisions,
+            and building stronger execution habits.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Consistency Building</h3>
+          <p>
+            Helping traders focus on routine, patience, and process
+            to become more stable and consistent over time.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Trading Psychology</h3>
+          <p>
+            Improving emotional control, confidence, patience,
+            and awareness around fear, greed, and overtrading.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Fund Management Guidance</h3>
+          <p>
+            Support around capital protection, position sizing,
+            risk control, and smarter money management decisions.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>1:1 Personal Guidance</h3>
+          <p>
+            Direct one-to-one support focused on strategy, discipline,
+            psychology, and building a more professional trading process.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="gray-bg">
+    <div class="container">
+      <h2 class="section-title">My Services</h2>
+      <p class="section-subtitle">
+        Practical support designed for traders who want real growth, not random shortcuts.
+      </p>
+
+      <div class="card-grid">
+        <div class="card">
+          <h3>Fund Management</h3>
+          <p>
+            Guidance around managing trading capital with a focus on structure,
+            risk control, and better decision-making.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>1:1 Trading Psychology Work</h3>
+          <p>
+            Personal support to improve emotional control, confidence,
+            patience, and overall mindset in the market.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Strategy Development</h3>
+          <p>
+            Helping traders identify better approaches, improve setups,
+            and build practical, repeatable strategies.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Discipline & Consistency Coaching</h3>
+          <p>
+            Working on routines, execution habits, trading rules,
+            and mindset shifts for more stable performance.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Trading Growth Guidance</h3>
+          <p>
+            Support for traders who want a stronger foundation in trading and investing
+            with a practical, disciplined approach.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Mindset Structuring</h3>
+          <p>
+            Helping traders stay calm under pressure, avoid revenge trading,
+            and improve self-control during winning and losing phases.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE ME -->
+  <section id="why" class="light-bg">
+    <div class="container">
+      <h2 class="section-title">Why Choose Capital Gainers</h2>
+      <p class="section-subtitle">
+        The goal is to build long-term improvement through practical guidance,
+        strategy clarity, and a strong mindset.
+      </p>
+
+      <div class="feature-grid">
+        <div class="feature-box">
+          <h4>Practical Approach</h4>
+          <p>
+            The focus is on real trading improvement — not hype, unrealistic promises,
+            or shortcut-based thinking.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <h4>Mindset + Strategy Together</h4>
+          <p>
+            A good strategy alone is not enough. Trading psychology and discipline
+            are equally important for consistency.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <h4>Consistency Over Hype</h4>
+          <p>
+            The aim is not one lucky trade — it is building repeatable habits,
+            smarter decisions, and a sustainable process.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <h4>Personal Guidance</h4>
+          <p>
+            Every trader faces different struggles. The support is focused on
+            helping where you need it most.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MY APPROACH -->
+  <section class="gray-bg">
+    <div class="container">
+      <h2 class="section-title">My Approach</h2>
+      <p class="section-subtitle">
+        Successful trading is built on clarity, discipline, risk control,
+        psychology, and consistency.
+      </p>
+
+      <div class="feature-grid">
+        <div class="feature-box">
+          <h4>1. Clarity</h4>
+          <p>
+            Knowing what you are doing, why you are doing it, and what your plan is
+            before entering the market.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <h4>2. Discipline</h4>
+          <p>
+            Following your process, respecting your setup,
+            and avoiding emotional or impulsive decisions.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <h4>3. Risk Management</h4>
+          <p>
+            Protecting capital, controlling drawdowns,
+            and treating risk as a core part of trading success.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <h4>4. Psychology</h4>
+          <p>
+            Improving patience, emotional control, self-awareness,
+            and confidence under market pressure.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <h4>5. Consistency</h4>
+          <p>
+            Building repeatable habits and focusing on long-term progress
+            instead of short-term excitement.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <h4>6. Growth Mindset</h4>
+          <p>
+            Learning from mistakes, improving gradually,
+            and approaching trading as a long-term skill.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="light-bg">
+    <div class="container">
+      <h2 class="section-title">Let’s Work on Your Trading Growth</h2>
+      <p class="section-subtitle">
+        If you want to improve your strategy, build stronger discipline,
+        work on consistency, or get 1:1 support for trading psychology and development,
+        feel free to get in touch.
+      </p>
+
+      <div class="contact-wrapper">
+        <div class="contact-box">
+          <h3>Get In Touch</h3>
+          <p>
+            Whether you are struggling with discipline, emotional trading,
+            strategy confusion, or consistency, Capital Gainers is here to help you
+            move forward with more clarity and confidence.
+          </p>
+
+          <div class="contact-cta">
+            <a href="mailto:sk3943916@gmail.com" class="btn btn-primary">Email Now</a>
+          </div>
+        </div>
+
+        <div class="contact-info">
+          <h3>Contact Details</h3>
+          <p><strong>Phone:</strong> +91 97793 18947</p>
+          <p><strong>Email:</strong> sk3943916@gmail.com</p>
+          <p><strong>Brand:</strong> Capital Gainers</p>
+          <p><strong>Focus:</strong> Trading • Investing • Discipline • Consistency</p>
+
+          <div class="contact-links">
+            <a href="tel:+919779318947">Call Now</a><br>
+            <a href="mailto:sk3943916@gmail.com">Send Email</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <h3>Capital Gainers</h3>
+      <p>Trading • Investing • Discipline • Consistency</p>
+      <p>Helping traders improve strategy, psychology, discipline, and long-term consistency.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
